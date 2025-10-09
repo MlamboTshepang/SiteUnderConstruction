@@ -1,0 +1,258 @@
+Subject: [PATCH] Site Under Construction
+---
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
++++ b/.idea/.gitignore	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
+@@ -0,0 +1,13 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Rider ignored files
++/contentModel.xml
++/projectSettingsUpdater.xml
++/modules.xml
++/.idea.PortfolioWebsiteRepo.iml
++# Editor-based HTTP Client requests
++/httpRequests/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
++++ b/.idea/encodings.xml	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise" />
++</project>
+\ No newline at end of file
+Index: .idea/indexLayout.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/indexLayout.xml b/.idea/indexLayout.xml
+new file mode 100644
+--- /dev/null	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
++++ b/.idea/indexLayout.xml	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="UserContentModel">
++    <attachedFolders />
++    <explicitIncludes />
++    <explicitExcludes />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
++++ b/.idea/vcs.xml	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .vscode/launch.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.vscode/launch.json b/.vscode/launch.json
+new file mode 100644
+--- /dev/null	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
++++ b/.vscode/launch.json	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
+@@ -0,0 +1,15 @@
++{
++    // Use IntelliSense to learn about possible attributes.
++    // Hover to view descriptions of existing attributes.
++    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
++    "version": "0.2.0",
++    "configurations": [
++        {
++            "type": "chrome",
++            "request": "launch",
++            "name": "Launch Chrome against localhost",
++            "url": "http://localhost:8080",
++            "webRoot": "${workspaceFolder}"
++        }
++    ]
++}
+\ No newline at end of file
+Index: index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.html b/index.html
+new file mode 100644
+--- /dev/null	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
++++ b/index.html	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
+@@ -0,0 +1,42 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <link rel="stylesheet" href="style.css">
++    <title>Site Under Consruction</title>
++</head>
++<body>
++  <div class="hand">
++    <h1>SITE UNDER CONSTRUCTION</h1>
++    <div class="card" style="--i: 0;"></div>
++    <div class="card" style="--i: 1;"></div>
++    <div class="card" style="--i: 2;"></div>
++    <!-- Insert iMAGE -->
++     <span>Site Is Under Construction.</span>
++  </div>  
++
++  <div class="hero-card">
++    <div class="avatar" aria-hidden="true">
++      <span>2025</span>
++    </div>
++  </div>
++<section id="About" class="section">
++  <div class="container two-col">
++    <div>
++      <h2>About Us</h2>
++      <p>We are a team of dedicated professionals working hard to bring you the best experience possible. Our site is currently under construction, but we are excited to share our progress with you soon!</p  >
++    </div>
++          <div class="badges">
++          <span class="badge">C# / .NET</span>
++          <span class="badge">React / TS</span>
++          <span class="badge">MySQL / Postgres</span>
++          <span class="badge">Docker / K8s</span>
++        </div>
++  </div>
++</section>
++  <div class="footer">
++    <p>© 2025 Under Pressure Inc. All rights reserved.</p>
++    <p>Follow us on <a href="#">WeStillWoringOnIt</a>, <a href="#">SorryAboutThat</a>, and <a href="#">Instagram</a>.</p>
++    </body>
++</html>
+\ No newline at end of file
+Index: style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/style.css b/style.css
+new file mode 100644
+--- /dev/null	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
++++ b/style.css	(revision 7496f9817f640155643dcdb7ec859a40dd9b27bc)
+@@ -0,0 +1,93 @@
++* {
++  box-sizing: border-box;
++  margin: unset;
++  padding: unset;
++  color: inherit;
++}
++
++html {
++  font-family: monospace;
++  font-size: max(5vmin, 16px);
++}
++
++body {
++  display: flex;
++  min-height: 100vh;
++  align-items: center;
++  justify-content: center;
++  background-color: hsl(240deg, 10%, 10%);
++  color: hsl(240deg, 10%, 90%);
++  
++  &:hover {
++    .hand {
++      grid-template-columns: repeat(5, 16vmin);
++      gap: 2vmin;
++    }
++    
++    .card {
++      &:hover:before {
++        transform: translateX(-50%) rotate(0) translateY(-20%);
++      }
++      
++      &:before {
++        transform: translateX(-50%) rotate(0);
++      }
++    }
++  }
++}
++
++.hand {
++  display: inline-grid;
++  counter-set: card 0;
++  grid-template-columns: repeat(5, 0);
++  gap: 0;
++  transition: 200ms ease-out;
++}
++
++.card {
++  position: relative;
++  height: 20vmin;
++  counter-increment: card;
++  
++  &:before {
++    top: 0;
++    left: 50%;
++    width: 16vmin;
++    height: 19vmin;
++    transform-origin: 50% 100%;
++    transform: translateX(-50%) rotate(calc((var(--i) * 15deg) - 30deg));
++    position: absolute;
++    content: counter(card);
++    border-radius: 1vmin;
++    border: 1px solid currentColor;
++    padding: .5vmin;
++    background-color: hsl(240deg, 10%, 10%);
++    transition: 200ms ease-out;
++  }
++}
++
++@keyframes fan {
++  from {
++    grid-template-columns: repeat(5, 16vmin);
++  }
++  to {
++    grid-template-columns: repeat(5, 0);
++  }
++}
++
++.site-footer { padding: 40px 0; border-top: 1px solid rgba(0,0,0,.06); background: #fff; text-align: center; }
++
++.badges { display:flex; gap: .5rem; flex-wrap: wrap; margin-top: .8rem; }
++.badge { background: var(100); color: var(900); padding: .35rem .6rem; border-radius: 999px; font-size: .9rem; border: 1px solid rgba(0,0,0,.06); }
++.two-col { display: grid; gap: 2rem; grid-template-columns: 1fr .8fr; }
++.container { width: min(1120px, 92%); margin: 0 auto; }
++.hero-card { background: #fff; border-radius: var(2); box-shadow: var(--shadow); padding: 1.2rem; border: 1px solid rgba(0,0,0,.06); }
++.avatar { width: 80px; height: 80px; border-radius: 999px; background: linear-gradient(135deg, var(--brand-emerald), var(--brand-olive)); color: #fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; margin-bottom: .6rem; }
++.hero-card h2 { margin: .2rem 0 .4rem; font-size: 1.1rem; }
++.hero-card p { color: var(--neutral-700); margin: 0 0 .6rem; }
++.hero-card .link { color: var(--brand-emerald); font-weight: 600; text-decoration: none; }
++.hero-card .link:hover { text-decoration: underline; }
++.card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.2rem; border: 1px solid rgba(0,0,0,.06); }
++
++.badges { display:flex; gap: .5rem; flex-wrap: wrap; margin-top: .8rem; }
++.badge { background: var(--neutral-100); color: var(--neutral-900); padding: .35rem .6rem; border-radius: 999px; font-size: .9rem; border: 1px solid rgba(0,0,0,.06); }
