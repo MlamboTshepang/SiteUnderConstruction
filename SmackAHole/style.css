@@ -1,0 +1,262 @@
+/* --- Global Styles --- */
+body {
+    /* Using a modern system font stack */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f9fc; /* A softer, light gray background */
+    color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all content */
+}
+
+h1 {
+    color: #2c3e50; /* A darker, softer blue-black */
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #34495e;
+    font-weight: 500;
+}
+
+/* --- Controls & Score --- */
+.controls {
+    display: flex;
+    justify-content: space-between; /* Evenly space the button and score */
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    margin: 20px 0;
+}
+
+#score {
+    font-weight: 700;
+    color: #007bff; /* Bright blue for emphasis */
+    font-size: 1.8em;
+    min-width: 50px; /* Prevents layout shifting as score changes */
+    display: inline-block;
+}
+
+#start-button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #28a745; /* A vibrant, friendly green */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Softer corners */
+
+    /* Subtle shadow for depth */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    /* Smooth transitions for hover effects */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#start-button:hover:not(:disabled) {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight "lift" on hover */
+}
+
+#start-button:disabled {
+    background-color: #adb5bd; /* Clearer disabled state */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* --- Game Board --- */
+#game-board {
+    display: grid;
+
+    /* Responsive Grid:
+      - Uses 1fr (fractional unit) to take up equal space.
+      - minmax() ensures holes are at least 80px but can grow.
+    */
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    gap: 20px; /* More space between holes */
+
+    width: 100%;
+    max-width: 450px; /* Constrains the board size on large screens */
+    margin: 20px auto;
+
+    background-color: #e9eef2; /* Light, clean board color */
+    border: none; /* Remove the old harsh border */
+    padding: 20px;
+    border-radius: 15px; /* Softer corners for the board */
+
+    /* A more significant shadow to "lift" the board */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Hole & Mole Styles --- */
+.hole {
+    /* This makes the hole a perfect square that is
+      responsive to the grid's column width.
+    */
+    aspect-ratio: 1 / 1;
+    width: 100%; /* Fill the grid cell */
+    height: auto;
+
+    background-color: #dbe4ec; /* "Empty" hole color, darker than board */
+    border-radius: 50%;
+    border: 4px solid #ffffff; /* Adds a clean inner bevel */
+
+    /* Inset shadow to make it look "recessed" */
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* This is the animation!
+      Transitions 'all' properties over 0.15s with a "bouncy" effect.
+    nd  This will animate the backgrou-color and transform change.
+    */
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* This is the "mole" state */
+.hole.mole {
+    background-color: #007bff; /* Vibrant blue "mole" */
+    border-color: #cce5ff; /* A light blue "glow" */
+    cursor: pointer;
+
+    /* "Pop up" effect: makes it slightly bigger */
+    transform: scale(1.1);
+
+    /* Adds an outer "glow" shadow to make it pop */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(0, 123, 255, 0.5);
+}
+
+/* --- New Timer & Stat Box Styles --- */
+
+/* This makes the 'Time:' and 'Score:' labels consistent */
+.stat-box {
+    text-align: center;
+    /* Give it a base width so button isn't crowded */
+    flex-basis: 100px;
+}
+
+/* Style the 'Time:' and 'Score:' labels */
+.stat-box h2 {
+    margin: 0; /* Remove default h2 margin */
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #34495e;
+}
+
+/* Style for the timer number */
+#time-left {
+    font-weight: 700;
+    color: #dc3545; /* Red for urgency */
+    font-size: 1.8em;
+    min-width: 50px; /* Match score for layout consistency */
+    display: inline-block;
+}
+
+
+/*more*/
+/* --- NEW: Difficulty Button Styles --- */
+.difficulty-select {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.difficulty-btn {
+    padding: 8px 16px;
+    font-size: 0.9em;
+    font-weight: 600;
+    border: 2px solid #adb5bd; /* Default border */
+    background-color: #f7f9fc; /* Light background */
+    color: #495057;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.difficulty-btn:hover {
+    background-color: #e9eef2;
+}
+
+/* This class will be added by JS */
+.difficulty-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* --- NEW: High Score Board Styles --- */
+#high-score-container {
+    width: 100%;
+    max-width: 450px; /* Match game board width */
+    margin-top: 30px;
+    background-color: #ffffff;
+    padding: 15px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+#high-score-container h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #e9eef2;
+    padding-bottom: 10px;
+}
+
+#high-score-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin: 0;
+}
+
+#high-score-list li {
+    font-size: 1.1em;
+    color: #34495e;
+    padding: 8px 0;
+    font-weight: 500;
+}
+
+/* Add a bit of flair to the top score */
+#high-score-list li:first-child {
+    font-weight: 700;
+    color: #007bff;
+}
+/* --- Professional Input Field Style --- */
+#usernameinput {
+    width: 100%;
+    max-width: 450px; 
+    padding: 12px 15px;
+    font-size: 1em;
+    font-family: inherit; 
+    color: #34495e;
+
+    background-color: #ffffff;
+    border: 2px solid #dbe4ec; /* Use the 'empty hole' color */
+    border-radius: 8px; 
+
+    box-sizing: border-box; /* Crucial for padding to work with 100% width */
+    margin-bottom: 15px; /* Add space below it */
+
+    /* Smooth transition for focus */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Style for when the user clicks *into* the box */
+#usernameinput:focus {
+    border-color: #007bff; /* Primary blue from the theme */
+
+    /* Add a "glow" to show it's active */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+
+    /* Remove the default browser outline */
+    outline: none;
+}
+
+/* Style for the placeholder text */
+#usernameinput::placeholder {
+    color: #adb5bd; /* A light, subtle gray */
+    opacity: 1; /* Ensure it's not faded by default */
+}

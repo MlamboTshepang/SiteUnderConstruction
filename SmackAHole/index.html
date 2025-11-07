@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div>
+    <h1>Smack-a-Hole!</h1>
+    <h1 id="username"></h1>
+    <input type="text" id="usernameinput" placeholder="Enter your name">
+</div>
+<div class="controls">
+    <div class="stat-box">
+        <h2>Time: <span id="time-left">0</span></h2>
+    </div>
+    <button id="start-button">Start Game</button>
+    <div class="stat-box">
+        <h2>Score: <span id="score">0</span></h2>
+    </div>
+</div>
+<div class="difficulty-select">
+    <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+    <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+    <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+</div>
+<div id="game-board">
+    <div class="hole"></div>
+    <div class="hole"></div>
+    <div class="hole"></div>
+    <div class="hole"></div>
+    <div class="hole"></div>
+    <div class="hole"></div>
+    <div class="hole"></div>
+    <div class="hole"></div>
+    <div class="hole"></div>
+</div>
+<div id="high-score-container">
+    <h3>High Scores</h3>
+    <ol id="high-score-list">
+        <li>No scores yet...</li>
+    </ol>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
