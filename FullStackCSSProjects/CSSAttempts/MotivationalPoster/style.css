@@ -1,0 +1,35 @@
+h1{
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: bold;
+    color: lightblue;
+}
+
+#poster{
+    background-color: black;
+    border-width: 100px;
+    border-top: 10px solid;
+    width: 50%;
+    font-family: "Libre Baskerville", serif;
+    text-align: center;
+}
+
+#text{
+    color: white;
+    background-color: black;
+    text-align: center;
+    text-transform: capitalize;
+}
+p{
+    color: white;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+*{
+    background-color: black;
+}
+
+img{
+    align-content: center;
+}
