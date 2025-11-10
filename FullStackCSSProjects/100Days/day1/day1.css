@@ -1,0 +1,53 @@
+body{
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    min-height: 100vh;
+}
+
+.PrimaryButton{
+    padding: 10px 20px;
+    font-size: 20px;
+    border-width: thin;
+    border-style: solid;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    /* The "Resting" Float State */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    cursor: pointer;
+
+    /* The Animation */
+    transition: transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+    
+}
+.PrimaryButton:hover{
+    /* Lift it up */
+    transform: translateY(-5px);
+
+    /* Make the shadow bigger and softer */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+
+    /* Make the glass "brighter" */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+}
+
+.glass-button {
+    /* Text and Layout */
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    
+}
+.glass-button:hover{
+    transform: translateY(-5px);
+}
+
