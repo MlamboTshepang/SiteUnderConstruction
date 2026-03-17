@@ -1,0 +1,303 @@
+/*Root Styling*/
+body {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 2;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    text-transform: uppercase;
+    color: #f8fafc;
+    background-color: #050505;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/*HEADER STYLING*/
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    z-index: 1000;
+}
+
+
+/*NAVBAR*/
+nav {
+    /* The Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(10px);  
+
+    /* Border and Shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 90px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    /* Layout */
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+}
+
+nav li {
+    list-style: none;
+    margin: 0 20px;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for a professional feel */
+nav li:hover {
+    color: #00d4ff;
+    border-radius: 15px;
+    background-color: #050505;
+}
+
+/* Fix the navigation list layout */
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*-------------IDs----------------*/
+/* The invisible container holding the lights */
+#led-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap; /* Allows the LEDs to wrap into rows */
+    align-content: flex-start;
+    z-index: -1; /* Pushes the grid behind your text */
+}
+
+/*-----------CLASSES-------------*/
+
+/* The Unlit LED */
+.led {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-radius: 50%; /* Makes them perfectly round */
+    margin: 2px; /* Adds space between the lights */
+
+    /* THE FADE OUT: When the mouse leaves, it takes 1.5 seconds to fade to dark */
+    transition: background-color 5s ease, box-shadow 1.5s ease;
+}
+
+/* The Lit LED (When your mouse touches it) */
+.led:hover {
+    /* THE INSTANT ON: 0 seconds transition means it lights up immediately! */
+    transition: background-color 0s, box-shadow 0s;
+
+    background-color: #0ea5e9; /* Bright neon cyan */
+    box-shadow: 0 0 10px #0ea5e9, 0 0 20px #0ea5e9; /* A beautiful glowing halo */
+}
+
+/* 2. The Content Wrapper (Floating on top) */
+/* Update your .content class to use Flexbox so items sit side-by-side */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: inline-block;
+    align-items: center;
+    gap: 4rem;
+    width: 90%;
+    max-width: 1200px;
+    pointer-events: auto;
+    border-color: ghostwhite;
+}
+
+/* Ensure the text takes up appropriate space */
+.hero-text {
+    flex: 1;
+    color: #f8fafc;
+    text-align: left;
+    background-color: rgb(255,255,255, 0.1);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+
+/* Style the new semantic button */
+.primary-btn {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background-color: #0ea5e9;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    pointer-events: auto; /* Makes it clickable! */
+}
+
+.primary-btn:hover {
+    background-color: #0284c7;
+    opacity: 5;
+}
+
+/*Hero Section*/
+.hero-glass{
+    display: inline-grid;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    
+}
+
+/*Glass Card*/
+.glass-card {
+    /* Step 1: Translucent background */
+    background: rgba(255, 255, 255, 0.1);
+
+    /* Step 2: The blur effect */
+    backdrop-filter: blur(1000px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+
+    /* Step 3: Styling and edges */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* Step 4: Shadow for depth */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    /* Sizing and padding */
+    padding: 2rem;
+    width: 300px;
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+    
+    position: relative;
+}
+
+/*PAGE SECTION*/
+.page-section {
+    min-height: 100vh; /* Makes sure each section takes up exactly one screen */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 2rem 2rem; /* Top padding ensures text isn't hidden by the fixed navbar */
+    box-sizing: border-box;
+    z-index: 10;
+}
+/*FOOTER Styling*/
+footer {
+    position: relative;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* 1. The Base Button Styling */
+.selector-btn {
+    position: relative; /* Crucial for the animation to attach correctly */
+    background: rgba(14, 165, 233, 0.1); /* Very faint cyan background */
+    color: #E5ECE9; /* Neon cyan text */
+    border: 2px solid #0ea5e9;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.3s ease;
+
+    /* Optional: A slight text glow */
+    text-shadow: 0 0 8px rgba(14, 165, 233, 0.5);
+}
+
+/* 2. The Expanding Light Wave */
+.selector-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Pins it to the exact center of the button */
+
+    /* Start exactly the same size as the button */
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    z-index: -1; /* Push it behind the button text */
+
+    /* Run the animation infinitely */
+    animation: ledAuraPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* 3. The Hover State (When you touch the button) */
+.selector-btn:hover {
+    background: #293132;
+    color: #fff;
+    box-shadow: 0 0 20px #4B644A, 0 0 40px #0ea5e9; /* Instantly glow super bright */
+}
+
+/* 4. The Animation Keyframes */
+@keyframes ledAuraPulse {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        /* Start with a tight, bright shadow */
+        box-shadow: 0 0 20px #0ea5e9, inset 0 0 20px #0ea5e9;
+    }
+    100% {
+        /* Expand massively outward! */
+        width: 180%;
+        height: 250%;
+        opacity: 0; /* Fade to invisible as it expands */
+        box-shadow: 0 0 100px #0ea5e9, inset 0 0 40px #0ea5e9;
+    }
+}
+
+
+/*====================================================*/
+/* 7. MOBILE RESPONSIVENESS (The Magic Sauce)         */
+/*====================================================*/
+@media (max-width: 800px) {
+    /* 1. Shrink the navbar padding and text slightly */
+    nav {
+        padding: 0.8rem 1rem;
+    }
+    nav li {
+        margin: 0 8px;
+        font-size: 0.9rem;
+    }
+
+    /* 2. Stack the content vertically instead of side-by-side */
+    .content {
+        flex-direction: column; /* This pushes the card under the text! */
+        gap: 2rem; /* Reduce the massive gap for mobile */
+        text-align: center; /* Center the text for mobile readability */
+    }
+
+    /* 3. Center the hero text block itself */
+    .hero-text {
+        text-align: center;
+        padding: 1.5rem;
+    }
+}
