@@ -1,0 +1,149 @@
+/*Root Styles*/
+/*H1 H2 H3 H4 Paragraphs Anchors Font Family Base Page Colour*/
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+span{
+    display: block;
+    background-color: lightcoral;
+    text-align: center;
+}
+
+/*Header Styling*/
+nav{
+    display: inline-flex;
+    background-color: rgba(115, 119, 255, 0.5);
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    justify-content: center;
+    text-align: center;
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+}
+nav ul:hover{
+    background-color: lightcoral;
+    
+}
+
+
+
+
+/*AI NAVBAR*/
+/* Container for the buttons */
+.navbar-controls {
+    display: flex;
+    gap: 15px; /* Spacing between the buttons */
+    justify-content: flex-end; /* Aligns them to the right */
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Base styling for all buttons */
+.control-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2.5px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 1. Green Add Button */
+.control-btn.add {
+    border-color: #2eb34b;
+    color: #2eb34b;
+}
+
+.control-btn.add:hover {
+    background-color: #2eb34b;
+    color: white;
+}
+
+/* 2. Yellow Minimize Button */
+.control-btn.minimize {
+    border-color: #f1ba20;
+    color: #f1ba20;
+}
+
+.control-btn.minimize:hover {
+    background-color: #f1ba20;
+    color: white;
+}
+
+/* 3. Red Close Button */
+.control-btn.close {
+    border-color: #de3b4e;
+    color: #de3b4e;
+}
+
+.control-btn.close:hover {
+    background-color: #de3b4e;
+    color: white;
+}
+/*------*/
+/*Class Styling*/
+.header{
+    justify-content: center;
+    display: -moz-inline-grid;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.6px);
+    -webkit-backdrop-filter: blur(4.6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.header h1{
+    text-align: center;
+}
+.header p{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*Footer Styling*/
+footer{
+    background-color: #012622;
+    padding: 16px;
+    text-align: center;
+}
+footer span{
+    color: white;
+    display: block;
+}
+footer a{
+    color: white;
+    display: block;
+    
+}
+footer a:hover{
+    color: black;
+    text-decoration: none;
+    
+}
