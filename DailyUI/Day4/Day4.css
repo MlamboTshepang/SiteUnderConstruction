@@ -1,0 +1,68 @@
+/* Container styling */
+.calculator {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    width: 320px;
+}
+
+/* The Display Input */
+.display {
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: right;
+    color: #fff;
+    font-size: 35px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Button Grid Layout */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* Styling for Input Buttons */
+input[type="button"] {
+    height: 60px;
+    width: 60px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    background: #2d2d2d;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.05),
+    4px 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Hover and Click effects */
+input[type="button"]:hover {
+    background: #3d3d3d;
+}
+
+input[type="button"]:active {
+    transform: scale(0.95);
+}
+
+/* Specific styling for operators and equal sign */
+.operator {
+    color: #00d4ff !important;
+    font-weight: bold;
+}
+
+.equal {
+    grid-column: span 2;
+    width: 132px; /* Adjusted for span */
+    background: #00d4ff !important;
+    color: #000 !important;
+}
