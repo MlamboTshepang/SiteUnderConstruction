@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let offsetX = 0;
     let offsetY = 0;
 
-    const palette = ['#38bdf8' , '#818cf8', '#2dd4bf', '#94a3b8', '#e2e8f0'];
+    const palette = ['#FF8700' , '#005AFF', '#00E5FF', '#CCFF00', '#FFF5E6'];
 
     // 1. Draw the Grid
     function drawGrid() {
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const led = leds[index];
 
             led.style.transition = '0s';
-            led.style.backgroundColor = '#0ea5e9';
-            led.style.boxShadow = '0 0 10px #0ea5e9, 0 0 20px #0ea5e9';
+            led.style.backgroundColor = '#FF8700';
+            led.style.boxShadow = '0 0 10px #FF8700, 0 0 20px #FF8700';
 
             setTimeout(() => {
                 led.style.transition = 'background-color 4s ease, box-shadow 4s ease';
