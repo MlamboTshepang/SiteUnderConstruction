@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+/* Updated UI Overlay for 404 Context */
+#game-ui {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: white;
+    z-index: 10;
+    pointer-events: none; /* Lets clicks pass through the text if needed */
+}
+
+.error-title {
+    font-size: 32px;
+    color: #ef4444; /* Error Red */
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.score-board {
+    font-size: 20px;
+    color: #2dd4bf;
+    margin-bottom: 10px;
+}
+
+#game-over-text {
+    color: #ef4444;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Make the button clickable again */
+.home-button {
+    display: inline-block;
+    pointer-events: auto;
+    background-color: #0284c7;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #0369a1;
+}
+
+/* LED Grid Layout */
+#led-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    z-index: 1;
+}
+
+/* Base LED styling */
+.led {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    border-radius: 4px;
+    background-color: #1e293b;
+}
+
+.led.snake {
+    background-color: #2dd4bf;
+    box-shadow: 0 0 10px #2dd4bf;
+}
+
+.led.snake-head {
+    background-color: #38bdf8;
+    box-shadow: 0 0 15px #38bdf8;
+}
+
+.led.food {
+    background-color: #ef4444;
+    box-shadow: 0 0 10px #ef4444;
+}

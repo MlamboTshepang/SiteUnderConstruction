@@ -1,0 +1,129 @@
+/* --- 1. CSS Variables for easy theming --- */
+:root {
+    --primary-color: #6c5ce7;
+    --bg-color: #f5f6fa;
+    --player-bg: #ffffff;
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 2. Basic Page Setup --- */
+body {
+    margin: 0;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- 3. The Main Player Card --- */
+.music-player {
+    background-color: var(--player-bg);
+    width: 320px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    text-align: center; /* Centers text and inline elements */
+}
+
+/* --- 4. Album Art --- */
+.album-art img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+/* --- 5. Track Information --- */
+.song-title {
+    margin: 0 0 5px 0;
+    color: var(--text-dark);
+    font-size: 1.4rem;
+}
+
+.artist-name {
+    margin: 0 0 20px 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* --- 6. Progress Bar Layout --- */
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    width: 35px;
+}
+
+.progress-bar-bg {
+    flex-grow: 1; /* Takes up remaining space between timestamps */
+    height: 6px;
+    background-color: #dfe6e9;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 40%; /* Represents how much of the song has played */
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 0.1s linear;
+}
+
+/* --- 7. Control Buttons --- */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between buttons */
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.1s ease;
+}
+
+.control-btn:hover {
+    color: var(--primary-color);
+}
+
+.control-btn:active {
+    transform: scale(0.9); /* Tiny click effect */
+}
+
+/* Special styling for the Play button */
+.play-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+}
+
+.play-btn:hover {
+    color: white;
+    background-color: #5b4bc4;
+    transform: scale(1.05); /* Slight grow effect on hover */
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings</title>
+    <link rel="stylesheet" href="Day7.css">
+</head>
+<body>
+
+<div class="settings-wrapper">
+
+    <aside class="settings-sidebar">
+        <h2 class="sidebar-title">Settings</h2>
+        <ul class="sidebar-menu">
+            <li class="menu-item active">Account Profile</li>
+            <li class="menu-item">Notifications</li>
+            <li class="menu-item">Privacy & Security</li>
+            <li class="menu-item">Billing</li>
+        </ul>
+    </aside>
+
+    <main class="settings-content">
+        <h1 class="content-title">Account Profile</h1>
+        <p class="content-description">Update your personal information and email address.</p>
+
+        <form class="settings-form">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" value="Da Plug">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" value="DaPlug.Johnson@421GrowsBros.Leaf">
+            </div>
+
+            <hr class="divider">
+
+            <div class="toggle-group">
+                <div class="toggle-text">
+                    <h3>Email Notifications</h3>
+                    <p>Receive weekly updates and tips.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button type="submit" class="save-button" onclick="Document.location.href='DailyUI/Home.html'">Save Changes</button>
+        </form>
+    </main>
+
+</div>
+
+</body>
+</html>
