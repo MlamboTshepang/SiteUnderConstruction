@@ -1,0 +1,276 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Public+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "oklch(0.15 0.01 250)",
+                        "on-background": "oklch(0.95 0.01 250)",
+                        "surface": "oklch(0.18 0.02 250)",
+                        "surface-dim": "oklch(0.12 0.01 250)",
+                        "surface-bright": "oklch(0.22 0.02 250)",
+                        "surface-container-lowest": "oklch(0.10 0.01 250)",
+                        "surface-container-low": "oklch(0.15 0.01 250)",
+                        "surface-container": "oklch(0.18 0.02 250)",
+                        "surface-container-high": "oklch(0.22 0.02 250)",
+                        "surface-container-highest": "oklch(0.26 0.02 250)",
+                        "on-surface": "oklch(0.95 0.01 250)",
+                        "on-surface-variant": "oklch(0.70 0.02 250)",
+                        "outline": "oklch(0.40 0.02 250)",
+                        "outline-variant": "oklch(0.30 0.02 250)",
+                        "primary": "oklch(0.65 0.20 45)",
+                        "on-primary": "oklch(0.10 0.02 250)",
+                        "primary-container": "oklch(0.35 0.15 45)",
+                        "on-primary-container": "oklch(0.90 0.10 45)",
+                        "secondary": "oklch(0.55 0.22 25)",
+                        "on-secondary": "oklch(0.95 0.02 25)",
+                        "secondary-container": "oklch(0.35 0.18 25)",
+                        "on-secondary-container": "oklch(0.95 0.10 25)",
+                        "error": "oklch(0.55 0.22 25)",
+                        "on-error": "oklch(0.95 0.02 25)",
+                        "error-container": "oklch(0.35 0.18 25)",
+                        "on-error-container": "oklch(0.95 0.10 25)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "form-max-width": "640px",
+                        "container-max-width": "1200px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Public Sans"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "button-text": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Public Sans"],
+                        "label-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "button-text": ["16px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-focus-indicator {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 4px;
+            background-color: theme('colors.primary');
+            display: none;
+        }
+        input:focus + .form-focus-indicator {
+            display: block;
+        }
+        .brushed-metal {
+            background-image: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(0,0,0,0.02)), repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(0,0,0,0.01) 1px, rgba(0,0,0,0.01) 2px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 border-b-4 border-primary bg-surface z-50">
+    <nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto">
+        <div class="font-headline-md text-headline-md font-bold uppercase tracking-tighter text-primary">
+            TACTICAL RESPONSE
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full">help</button>
+            <button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full">notifications</button>
+        </div>
+    </nav>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center px-margin-mobile md:px-margin-desktop py-12">
+    <!-- Progress Indicator -->
+    <div class="w-full max-w-[640px] mb-8">
+        <div class="flex items-center justify-between mb-2">
+            <span class="font-label-md text-label-md text-primary uppercase">Registration Progress</span>
+            <span class="font-label-md text-label-md text-primary">Step 1 of 1</span>
+        </div>
+        <div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="h-full bg-primary-container w-3/4"></div>
+        </div>
+    </div>
+    <!-- Signup Card -->
+    <div class="w-full max-w-[640px] bg-surface-container-lowest border-2 border-outline-variant shadow-sm relative">
+        <!-- Card Header Accent -->
+        <div class="h-1 bg-primary w-full"></div>
+        <div class="p-8 md:p-12">
+            <div class="mb-10 text-center md:text-left">
+                <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Personnel Enrollment</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant">Secure access for verified fire service professionals.</p>
+            </div>
+            <form class="space-y-8" onsubmit="return false;">
+                <!-- Section: Personal Identity -->
+                <div class="space-y-6">
+                    <h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest border-b border-outline-variant pb-2">Personal Identity</h2>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="relative group">
+                            <label class="block font-label-md text-label-md text-primary mb-2" for="full_name">Full Name</label>
+                            <div class="relative">
+                                <input class="w-full bg-surface border-2 border-outline-variant px-4 py-3 focus:border-primary focus:ring-0 transition-all font-body-md placeholder:text-outline-variant" id="full_name" placeholder="E.G. JOHN A. DOE" type="text">
+                                <div class="form-focus-indicator"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="relative group">
+                                <label class="block font-label-md text-label-md text-primary mb-2" for="email">Email Address</label>
+                                <div class="relative">
+                                    <input class="w-full bg-surface border-2 border-outline-variant px-4 py-3 focus:border-primary focus:ring-0 transition-all font-body-md placeholder:text-outline-variant" id="email" placeholder="DEPT_EMAIL@STATION.GOV" type="email">
+                                    <div class="form-focus-indicator"></div>
+                                </div>
+                            </div>
+                            <div class="relative group">
+                                <label class="block font-label-md text-label-md text-primary mb-2" for="phone">Phone Number</label>
+                                <div class="relative">
+                                    <input class="w-full bg-surface border-2 border-outline-variant px-4 py-3 focus:border-primary focus:ring-0 transition-all font-body-md placeholder:text-outline-variant" id="phone" placeholder="555-0199" type="tel">
+                                    <div class="form-focus-indicator"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Section: Departmental Credentials -->
+                <div class="space-y-6 pt-4">
+                    <h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest border-b border-outline-variant pb-2">Departmental Credentials</h2>
+                    <div class="space-y-6">
+                        <div class="relative group">
+                            <label class="block font-label-md text-label-md text-primary mb-2" for="dept_name">Fire Department Name</label>
+                            <div class="relative">
+                                <input class="w-full bg-surface border-2 border-outline-variant px-4 py-3 focus:border-primary focus:ring-0 transition-all font-body-md placeholder:text-outline-variant" id="dept_name" placeholder="E.G. METRO FIRE DISTRICT 4" type="text">
+                                <div class="form-focus-indicator"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="relative group">
+                                <label class="block font-label-md text-label-md text-primary mb-2" for="badge">Badge Number / ID</label>
+                                <div class="relative">
+                                    <input class="w-full bg-surface border-2 border-outline-variant px-4 py-3 focus:border-primary focus:ring-0 transition-all font-body-md placeholder:text-outline-variant" id="badge" placeholder="ID-77429" type="text">
+                                    <div class="form-focus-indicator"></div>
+                                </div>
+                            </div>
+                            <div class="relative group">
+                                <label class="block font-label-md text-label-md text-primary mb-2" for="rank">Rank / Position</label>
+                                <div class="relative">
+                                    <select class="w-full bg-surface border-2 border-outline-variant px-4 py-3 focus:border-primary focus:ring-0 transition-all font-body-md appearance-none" id="rank">
+                                        <option disabled="" selected="" value="">SELECT RANK</option>
+                                        <option value="firefighter">FIREFIGHTER</option>
+                                        <option value="engineer">ENGINEER</option>
+                                        <option value="lieutenant">LIEUTENANT</option>
+                                        <option value="captain">CAPTAIN</option>
+                                        <option value="chief">CHIEF OFFICER</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-primary">
+                                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="relative group">
+                        <label class="block font-label-md text-label-md text-primary mb-2" for="certifications">Specialized Certifications</label>
+                        <div class="relative">
+                            <input class="w-full bg-surface border-2 border-outline-variant px-4 py-3 focus:border-primary focus:ring-0 transition-all font-body-md placeholder:text-outline-variant" id="certifications" placeholder="E.G. HAZMAT, TECHNICAL RESCUE, PARAMEDIC" type="text">
+                            <div class="form-focus-indicator"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Section: Security -->
+                <div class="space-y-6 pt-4">
+                    <h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest border-b border-outline-variant pb-2">Security</h2>
+                    <div class="relative group">
+                        <label class="block font-label-md text-label-md text-primary mb-2" for="password">Secure Password</label>
+                        <div class="relative">
+                            <input class="w-full bg-surface border-2 border-outline-variant px-4 py-3 focus:border-primary focus:ring-0 transition-all font-body-md" id="password" placeholder="••••••••••••" type="password">
+                            <div class="form-focus-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Agreement -->
+                <div class="flex items-start gap-3 py-2">
+                    <input class="mt-1 w-6 h-6 border-2 border-outline-variant text-primary-container rounded-none focus:ring-0 focus:ring-offset-0 cursor-pointer" id="terms" type="checkbox">
+                    <label class="font-label-md text-label-md text-on-surface-variant cursor-pointer" for="terms">
+                        I certify that I am an active member of the listed department and agree to the <a class="text-secondary font-bold underline" href="#">Duty Guidelines</a>.
+                    </label>
+                </div>
+                <!-- Submit Button -->
+                <div class="pt-6">
+                    <button class="w-full bg-secondary hover:bg-secondary-container text-on-primary font-button-text text-button-text uppercase py-5 px-8 transition-all active:translate-y-0.5 shadow-[0_4px_0_0_var(--tw-shadow-color)] shadow-secondary-container active:shadow-none flex justify-center items-center gap-3" type="submit">
+                        <span class="material-symbols-outlined">how_to_reg</span>
+                        COMPLETE REGISTRATION
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Supplementary Content / Why Join -->
+    <div class="w-full max-w-[640px] mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-surface-container border-2 border-outline-variant flex gap-4 items-start">
+            <div class="p-2 bg-primary-container text-on-primary rounded">
+                <span class="material-symbols-outlined">security</span>
+            </div>
+            <div>
+                <h4 class="font-label-md text-label-md text-primary uppercase mb-1">Encrypted Data</h4>
+                <p class="text-sm text-on-surface-variant">All departmental data is encrypted using military-grade AES-256 protocols.</p>
+            </div>
+        </div>
+        <div class="p-6 bg-surface-container border-2 border-outline-variant flex gap-4 items-start">
+            <div class="p-2 bg-primary-container text-on-primary rounded">
+                <span class="material-symbols-outlined">speed</span>
+            </div>
+            <div>
+                <h4 class="font-label-md text-label-md text-primary uppercase mb-1">Rapid Dispatch</h4>
+                <p class="text-sm text-on-surface-variant">Instant synchronization with your local dispatch terminal upon approval.</p>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-mobile md:px-margin-desktop mt-auto flex flex-col md:flex-row justify-between items-center gap-4 border-t-4 border-primary bg-primary-container">
+    <div class="font-headline-md text-headline-md text-on-primary-container font-bold tracking-tighter">
+        TACTICAL RESPONSE
+    </div>
+    <div class="flex flex-wrap justify-center gap-6">
+        <a class="font-label-md text-label-md text-on-primary-container opacity-80 hover:text-on-secondary-container transition-opacity cursor-pointer" href="#">Terms of Service</a>
+        <a class="font-label-md text-label-md text-on-primary-container opacity-80 hover:text-on-secondary-container transition-opacity cursor-pointer" href="#">Privacy Policy</a>
+        <a class="font-label-md text-label-md text-on-primary-container opacity-80 hover:text-on-secondary-container transition-opacity cursor-pointer" href="#">Technical Support</a>
+        <a class="font-label-md text-label-md text-on-primary-container opacity-80 hover:text-on-secondary-container transition-opacity cursor-pointer" href="#">Department Portal</a>
+    </div>
+    <div class="font-label-md text-label-md text-on-primary-container opacity-60">
+        © 2024 Tactical Response Systems. All rights reserved.
+    </div>
+</footer>
+<!-- Micro-interaction Script -->
+<script src="Day88.js"></script>
+
+
+</body></html>
