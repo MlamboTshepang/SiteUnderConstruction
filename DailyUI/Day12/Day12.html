@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tailwind Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold text-indigo-600">ShopFront</div>
+        <div class="space-x-6 hidden md:flex">
+            <a href="#" class="hover:text-indigo-600 transition">Men</a>
+            <a href="#" class="hover:text-indigo-600 transition">Women</a>
+            <a href="#" class="hover:text-indigo-600 transition">Accessories</a>
+        </div>
+        <div>
+            <button class="flex items-center space-x-2 text-gray-600 hover:text-indigo-600 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span class="font-medium">Cart (0)</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-indigo-50 py-16 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Welcome to the New Season</h1>
+    <p class="text-lg text-gray-600 mb-8">Discover our latest arrivals and upgrade your everyday style.</p>
+    <button class="bg-indigo-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-indigo-700 transition shadow-lg">Shop Now</button>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold mb-8">Featured Products</h2>
+    <section class="max-w-4xl mx-auto mt-8 mb-12">
+        <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-gray-200 h-64 w-full flex items-center justify-center text-gray-400">
+                [Image Placeholder]
+            </div>a
+            <div class="p-6">
+                <h3 class="text-2xl font-semibold mb-3">Limited Edition Hoodie</h3>
+                <p class="text-gray-500 text-sm mb-5">Soft, cozy, and perfect for chilly days.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-bold text-gray-900">$60.00</span>
+                    <button class="bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 transition">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-gray-200 h-48 w-full flex items-center justify-center text-gray-400">
+                [Image Placeholder]
+            </div>
+            <div class="p-5">
+                <h3 class="text-lg font-semibold mb-2">Classic White Tee</h3>
+                <p class="text-gray-500 text-sm mb-4">100% Cotton, highly breathable.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold text-gray-900">$25.00</span>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-gray-200 h-48 w-full flex items-center justify-center text-gray-400">
+                [Image Placeholder]
+            </div>
+            <div class="p-5">
+                <h3 class="text-lg font-semibold mb-2">Denim Jacket</h3>
+                <p class="text-gray-500 text-sm mb-4">Vintage wash, regular fit.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold text-gray-900">$85.00</span>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-gray-200 h-48 w-full flex items-center justify-center text-gray-400">
+                [Image Placeholder]
+            </div>
+            <div class="p-5">
+                <h3 class="text-lg font-semibold mb-2">Running Sneakers</h3>
+                <p class="text-gray-500 text-sm mb-4">Lightweight and durable.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold text-gray-900">$120.00</span>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-gray-200 h-48 w-full flex items-center justify-center text-gray-400">
+                [Image Placeholder]
+            </div>
+            <div class="p-5">
+                <h3 class="text-lg font-semibold mb-2">Leather Wallet</h3>
+                <p class="text-gray-500 text-sm mb-4">Genuine leather, RFID blocking.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold text-gray-900">$45.00</span>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Add</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+</body>
+</html>
