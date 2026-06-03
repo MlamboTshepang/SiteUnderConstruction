@@ -1,0 +1,76 @@
+/*Base Styling*/
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #374151 0%, #2575fc 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+}
+
+/* 2. The Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(12px); /* The frosted glass blur */
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle light border */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* 3. Custom Glassy Inputs */
+.glass-input, .glass-select {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+/* Change placeholder color so it's readable */
+.glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Focus state for inputs */
+.glass-input:focus, .glass-select:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    outline: none;
+}
+
+/* Option text color needs to be dark so it's readable in the dropdown menu */
+option {
+    color: #333;
+}
+
+/* 4. Glassy Submit Button */
+.glass-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/*Appointment Script*/
+.appointment-confirm{
+   background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+    
+}
