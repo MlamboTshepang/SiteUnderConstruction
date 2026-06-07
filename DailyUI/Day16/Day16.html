@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Pop-up Overlay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col justify-center items-center font-sans antialiased p-4">
+
+<div class="text-center">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">Pop-up Overslay</h1>
+    <button id="open-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-colors">Open Pop-up</button>
+</div>
+
+<div id="modal-wrapper" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all">
+        <div class="bg-gray-50 border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">Confirm Action</h3>
+            <button id="close-x-btn" class="text-gray-400 hover:text-gray-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="px-6 py-6 text-gray-600">
+            <p>Are you sure you want to proceed? This action will save your current progress and cannot be undone easily.</p>
+        </div>
+
+        <div class="bg-gray-50 px-6 py-4 flex justify-end space-x-3 rounded-b-2xl">
+            <button id="cancel-btn" class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors">
+                Cancel
+            </button>
+            <button id="confirm-btn" class="px-4 py-2 bg-blue-600 rounded-lg text-white font-medium hover:bg-blue-700 shadow-sm transition-colors">
+                Confirm
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Grab the elements we need to interact with
+    const openBtn = document.getElementById('open-btn');
+    const modalWrapper = document.getElementById('modal-wrapper');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+
+    // Grab all the buttons that should close the modal
+    const closeXBtn = document.getElementById('close-x-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const confirmBtn = document.getElementById('confirm-btn');
+
+    // Function to open the modal
+    function openModal() {
+        // Remove 'hidden' so it displays, and ensure 'flex' is active for centering
+        modalWrapper.classList.remove('hidden');
+        modalWrapper.classList.add('flex');
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        // Add 'hidden' to hide it, and remove 'flex'
+        modalWrapper.classList.add('hidden');
+        modalWrapper.classList.remove('flex');
+    }
+
+    // Add event listeners
+    openBtn.addEventListener('click', openModal);
+    closeXBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Let's make the Confirm button close it for now, too
+    confirmBtn.addEventListener('click', () => {
+        alert("Action Confirmed!");
+        closeModal();
+    });
+
+    // Optional UX feature: Close modal if the user clicks the dark background overlay
+    modalBackdrop.addEventListener('click', closeModal);
+</script>
+</body>
+</html>
