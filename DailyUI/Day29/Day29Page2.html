@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Cartographer - Search &amp; Discovery</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-on-surface": "#9a9d9f",
+                        "on-primary-container": "#00214e",
+                        "on-primary-fixed": "#000000",
+                        "on-surface-variant": "#595c5e",
+                        "secondary": "#4e5c71",
+                        "inverse-surface": "#0b0f10",
+                        "surface-variant": "#d9dde0",
+                        "surface-bright": "#f5f7f9",
+                        "tertiary-dim": "#7f2d7e",
+                        "primary": "#0058ba",
+                        "primary-dim": "#004da4",
+                        "on-error-container": "#570008",
+                        "tertiary-fixed": "#f797f0",
+                        "on-tertiary": "#ffeef8",
+                        "secondary-container": "#d5e3fc",
+                        "on-secondary-container": "#455367",
+                        "error-dim": "#9f0519",
+                        "on-secondary-fixed-variant": "#4e5c71",
+                        "surface-tint": "#0058ba",
+                        "primary-container": "#6c9fff",
+                        "on-secondary-fixed": "#324053",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#e88ae1",
+                        "surface-container": "#e5e9eb",
+                        "surface-container-high": "#dfe3e6",
+                        "tertiary-container": "#f797f0",
+                        "on-tertiary-container": "#610e63",
+                        "secondary-fixed-dim": "#c7d5ed",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-error": "#ffefee",
+                        "on-primary-fixed-variant": "#002a60",
+                        "surface-container-highest": "#d9dde0",
+                        "background": "#f5f7f9",
+                        "outline-variant": "#abadaf",
+                        "surface-container-low": "#eef1f3",
+                        "tertiary": "#8d3a8b",
+                        "on-background": "#2c2f31",
+                        "primary-fixed-dim": "#5091ff",
+                        "surface": "#f5f7f9",
+                        "on-secondary": "#edf3ff",
+                        "inverse-primary": "#4a8eff",
+                        "surface-dim": "#d0d5d8",
+                        "error-container": "#fb5151",
+                        "on-tertiary-fixed": "#400042",
+                        "on-primary": "#f0f2ff",
+                        "on-surface": "#2c2f31",
+                        "primary-fixed": "#6c9fff",
+                        "error": "#b31b25",
+                        "secondary-dim": "#435164",
+                        "outline": "#747779",
+                        "on-tertiary-fixed-variant": "#6c1a6c"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .ambient-shadow {
+            box-shadow: 0px 4px 20px rgba(44, 47, 49, 0.04), 0px 8px 40px rgba(44, 47, 49, 0.08);
+        }
+        body {
+            background-color: #f5f7f9;
+            color: #2c2f31;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar: Authority Source JSON -->
+<aside class="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 z-40 bg-slate-50 dark:bg-slate-900 border-r-0 bg-surface-container-low">
+    <div class="p-8">
+        <div class="text-2xl font-black text-blue-700 dark:text-blue-400 font-headline mb-10">Cartographer</div>
+        <nav class="space-y-2">
+            <!-- Explore is ACTIVE for a Search & Discovery View -->
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-blue-700 dark:text-blue-400 border-r-4 border-blue-700 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/20 font-bold transition-all duration-150" href="#">
+                <span class="material-symbols-outlined" data-icon="explore">explore</span>
+                <span class="font-label uppercase tracking-wider text-xs">Explore</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+                <span class="font-label uppercase tracking-wider text-xs">Saved</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="map">map</span>
+                <span class="font-label uppercase tracking-wider text-xs">Journeys</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="person_outline">person_outline</span>
+                <span class="font-label uppercase tracking-wider text-xs">Profile</span>
+            </a>
+        </nav>
+        <div class="mt-12 pt-12 border-t border-outline-variant/10">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high">
+                    <img alt="User avatar" data-alt="close-up portrait of a professional man in his 30s with a warm smile, wearing a casual navy blue shirt, soft outdoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApsEwN9odQXjQtksWXF4KJFNFqNKgFynk-thyMTuX0Fe51JB9gucNNKJ5exJ4t8x97T1_eHB8Kp4MfAg-eOxr00dPuv4ilmGXzP9h7Q7k6N0HR-g9PmN8Vh_8UYfB_oyWgfT74sfRbdMbaM4D558YmxbGX2cpwr0CMI_ng1r02NQRBVZbGk8C7o_IzUkKvmb8P3VRfCVco_W9PGoxKtxN_rYl_kzw6LKibw0X_RhI9UXfsSH_GaZV9bVkctj8f0xT6KIX38gS3m0_u"/>
+                </div>
+                <div>
+                    <div class="text-sm font-bold font-headline text-on-surface">The Explorer</div>
+                    <div class="text-[10px] font-label uppercase tracking-tighter text-on-surface-variant">Elite Cartographer</div>
+                </div>
+            </div>
+        </div>
+        <button class="mt-8 w-full py-4 bg-primary text-on-primary rounded-xl font-bold font-headline shadow-lg hover:shadow-primary/20 transition-all flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-sm">add_location_alt</span>
+            New Discovery
+        </button>
+    </div>
+</aside>
+<!-- TopAppBar: Authority Source JSON -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center px-4 h-16 max-w-5xl mx-auto bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-xl mt-4">
+    <div class="flex items-center gap-4 w-full">
+        <div class="flex-1 flex items-center bg-surface-container-lowest rounded-xl px-4 py-2 ring-1 ring-outline-variant/15">
+            <span class="material-symbols-outlined text-slate-400 mr-2">search</span>
+            <input class="bg-transparent border-none focus:ring-0 text-sm w-full text-on-surface font-body" placeholder="Search destinations..." type="text" value="Nearby"/>
+        </div>
+        <div class="flex items-center gap-2">
+            <button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-colors">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-colors">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            </button>
+            <div class="w-8 h-8 rounded-full overflow-hidden ml-2 md:hidden">
+                <img alt="User profile" data-alt="circular profile photo of a person's face against a neutral gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJBgQ44fXm6OxnPdSE6wKakfAE-SqLvYcEbPMz3HBwz2NcQPrUNbTbOj7uyMD_MZwjofNc58HxOLMchubbpIZFIJl6keAyReoF2DlMgPG_ViFujR4fht0G-MiUmOuluzeRbJ5iKfbLX91xWfDLjcJ9tGf5yEUotwZJLCx824-mnZhoxg4n7rccGoWuCvvLZeD11LlsCQgDmRux4p5XSNExGN850oMDcm2cQ64Yv4VT_XrGKdKK0tgtpiJ1Q5RTVA6oiRjrjFuOwORF"/>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Canvas -->
+<main class="md:ml-64 pt-28 pb-20 px-6 min-h-screen">
+    <div class="max-w-5xl mx-auto">
+        <!-- Section: Categories/Quick Filters -->
+        <section class="mb-10">
+            <div class="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
+                <button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-bold text-sm whitespace-nowrap ambient-shadow">
+                    Nearby</button>
+                <button class="px-6 py-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-medium text-sm whitespace-nowrap hover:bg-surface-container-highest transition-colors">
+                    Recent</button>
+                <button class="px-6 py-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-medium text-sm whitespace-nowrap hover:bg-surface-container-highest transition-colors">
+                    Cultural Sites</button>
+                <button class="px-6 py-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-medium text-sm whitespace-nowrap hover:bg-surface-container-highest transition-colors">
+                    Natural Wonders</button>
+                <button class="px-6 py-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-medium text-sm whitespace-nowrap hover:bg-surface-container-highest transition-colors">
+                    Transit</button>
+            </div>
+        </section>
+        <!-- Results Layout: Bento-style asymmetry -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Large Hero Result -->
+            <article class="lg:col-span-8 group">
+                <div class="relative rounded-3xl overflow-hidden bg-surface-container-lowest h-[400px] ambient-shadow">
+                    <img alt="Golden Gate Bridge" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="wide angle shot of a majestic suspension bridge over misty blue water at dawn, soft orange and purple lighting in sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwADwo52RgUBGEANdxHN8ky305i3R-w4c3C7epi05p2xXGODfygIxYJy5KFb_edIDdgkJFEdIxIyEzanEqLno1bCXCKXqxIHk-uj8cGLFxMZNRO-pv1fmtP1b1Q1s8gfyiBjhXOuO20F3MWMF-BUP1V2MGIka0BTOyAomMofRKQ26RxdcOXMNZbjFK1gbP2V3k_fKMUETkxu8UvTApCZIoiwTh2YbBGqOpkWgTLNtOpAmdDQ8TP61uoHi-1KFH_5Ziu2EzYPS4nQAD"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="flex justify-between items-end">
+                            <div class="space-y-2">
+                                <span class="text-[10px] font-label uppercase tracking-widest text-primary-container font-bold bg-primary/10 px-2 py-1 rounded backdrop-blur-md">Featured Discovery</span>
+                                <h2 class="text-4xl font-headline font-extrabold text-white tracking-tight">The Golden Gate Vista</h2>
+                                <p class="text-white/80 max-w-md text-sm leading-relaxed">Experience the architectural marvel with hidden hiking trails leading to panoramic vistas of the Pacific Ocean.</p>
+                            </div>
+                            <button class="bg-primary hover:bg-primary-dim text-white rounded-full p-4 flex items-center justify-center transition-all scale-100 active:scale-95 shadow-xl">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- Sidebar List: Recent / Nearby Mix -->
+            <div class="lg:col-span-4 space-y-6">
+                <h3 class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant font-bold">Recommended Nearby</h3>
+                <!-- Card 1 -->
+                <div class="bg-surface-container-lowest p-4 rounded-2xl flex gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+                    <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                        <img alt="Botanical Garden" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="lush exotic greenhouse with giant palm leaves and colorful tropical flowers under a glass dome, bright natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2hoF-Mw30nyXte_Uey2zpdON7LH0gN3baMPxivb5KLLpcDo-Uj8P_hJ6FE9QPIRw8oDfQPpNsh2q1y-XRDgNZ3yBMSjB-2XhtTYhFb_D4y8jpiQoinaZp_aIFJGbbFFXaqIvYgQlpEmmUWoPJW1Z8CzBsUM_MK3ozXAT2fdX-h3MlBRN6Ys2Z_mknKWWdf5FBs6t8j8IcgKXIef3nJxbdXR9aV46KXyFVDzRuTO0nat1XUEW2WPdwLCoTReXfMGwUP1h1oVT9czki"/>
+                    </div>
+                    <div class="flex flex-col justify-between py-1">
+                        <div>
+                            <h4 class="font-headline font-bold text-on-surface text-sm">Azure Conservatory</h4>
+                            <p class="text-on-surface-variant text-xs mt-1">Tropical Flora &amp; Hidden Ponds</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-label uppercase font-bold text-primary tracking-tighter">0.8 MILES</span>
+                            <span class="text-[10px] text-outline">•</span>
+                            <span class="text-[10px] text-on-surface-variant">Closed 10PM</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-surface-container-lowest p-4 rounded-2xl flex gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+                    <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                        <img alt="Coffee Roastery" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="industrial chic coffee shop with modern minimal lighting, rustic wooden tables and plants, warm and inviting atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf-Rjmm7WwxeoOuZcO-IF_0cL509U7IVP2dZPb_m7CKGRaJkyamt8S406EPLIOLH3v-ufnzGt6ePYZieMzURXbA8cZ3LfpcIgFhHwPicKf4VH3x7UUAtvino53tZuT-8p_h4Xlz56eNxN1CbpCynpaksUdbxcq-uGdI0VYjtG-lQOQoGv5EfW1FWjtMa0Kg0iie0HCK5g09yUnpm9xig0B8dQhA_kcE73MRilRjrOknCIclc4V-s2Ekvkb-vnPHCyesUUPz4xWkbSl"/>
+                    </div>
+                    <div class="flex flex-col justify-between py-1">
+                        <div>
+                            <h4 class="font-headline font-bold text-on-surface text-sm">Obsidian Roasters</h4>
+                            <p class="text-on-surface-variant text-xs mt-1">Specialty Grade Ethiopian Blends</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-label uppercase font-bold text-primary tracking-tighter">1.2 MILES</span>
+                            <span class="text-[10px] text-outline">•</span>
+                            <span class="text-[10px] text-on-surface-variant">Open Now</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-surface-container-lowest p-4 rounded-2xl flex gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+                    <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                        <img alt="Public Library" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="grand classical library architecture with tall marble columns and arched windows, soft afternoon sunlight through glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdDD-_V8ngDgPknQssRF51H6qRz2MsMwhe3Nmw9aa2EPqTmEvkb9IQjgAyUB3jCu6Zb0H19pN7Cy4gBG-mYWYI029sHR3kuYs3FDIWJcqvM4P0xcxb8diE9c9vSAymOx4Gd9dWlgmnUh5lpxrfiehl6FR-vimPoAsaZJJIxZzjfxybvYlesjCYPqVdPzxTMEzAKcXBCoAow4i_fVifo12HtaFuYzMGb2eagNAesnr_ps3DIo1k8hLHDdcEKeWVxW5TlyN9ME_Mcqg1"/>
+                    </div>
+                    <div class="flex flex-col justify-between py-1">
+                        <div>
+                            <h4 class="font-headline font-bold text-on-surface text-sm">Founders Library</h4>
+                            <p class="text-on-surface-variant text-xs mt-1">Quiet Zones &amp; Rare Manuscripts</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-label uppercase font-bold text-primary tracking-tighter">2.4 MILES</span>
+                            <span class="text-[10px] text-outline">•</span>
+                            <span class="text-[10px] text-on-surface-variant">Open 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section: Map Preview (Asymmetric) -->
+        <section class="mt-12">
+            <h3 class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant font-bold mb-6">Discovery Map</h3>
+            <div class="relative rounded-[32px] overflow-hidden bg-surface-container h-[350px] ambient-shadow group">
+                <!-- Simplified Map Placeholder -->
+                <img alt="Map Area" class="w-full h-full object-cover opacity-80" data-alt="detailed topographic map of a coastal city with artistic blue and white color grading, showing street grids and parks" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDQwUunqHlxo5zF3s686fcvXvKVrYZ-tRK89_b1wcE9--l8aSMQ_6oXprIRcDgDlZWPn3JPPHqXq3JmtIJVS4SNsmMseMRCbGznC_RiIvZuXjojozwSBSl5A-MpHO6WC5ZOTzun8nSyq4NUQD3Glw8C0z9ZloFYaeR-DLs8SoNAWTAdZAC25mriNSNIdqX3gri4kLfSFD7vIjClPeOZlenCwxZAtlBd5K9yQnK8AS6o_eKR1Xl-xrMLmxCwjOxw3xqXhibOsTZEJeC"/>
+                <!-- Custom Map Overlays -->
+                <div class="absolute top-6 left-6 p-4 bg-white/70 backdrop-blur-xl rounded-2xl ring-1 ring-white/20">
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                        <span class="text-xs font-bold text-on-surface">You are here: North Market</span>
+                    </div>
+                </div>
+                <!-- Floating Map Instrument -->
+                <div class="absolute bottom-6 right-6 flex flex-col gap-2">
+                    <button class="w-12 h-12 rounded-full bg-white text-on-surface shadow-xl flex items-center justify-center hover:bg-slate-50 transition-colors">
+                        <span class="material-symbols-outlined">add</span>
+                    </button>
+                    <button class="w-12 h-12 rounded-full bg-white text-on-surface shadow-xl flex items-center justify-center hover:bg-slate-50 transition-colors">
+                        <span class="material-symbols-outlined">remove</span>
+                    </button>
+                    <button class="w-12 h-12 rounded-full bg-primary text-white shadow-xl flex items-center justify-center mt-2 hover:bg-primary-dim transition-all scale-100 active:scale-95">
+                        <span class="material-symbols-outlined">my_location</span>
+                    </button>
+                </div>
+                <!-- Markers -->
+                <div class="absolute top-1/2 left-1/3 group cursor-pointer">
+                    <div class="bg-primary p-2 rounded-full shadow-lg ring-4 ring-primary/20 scale-100 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-white text-xs" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+                    </div>
+                    <div class="mt-2 px-3 py-1 bg-white/90 backdrop-blur-md rounded-lg shadow-sm border border-white/40">
+                        <span class="text-[10px] font-bold text-on-surface whitespace-nowrap">Obsidian Roasters</span>
+                    </div>
+                </div>
+                <div class="absolute top-1/4 right-1/4 group cursor-pointer">
+                    <div class="bg-secondary p-2 rounded-full shadow-lg ring-4 ring-secondary/20 scale-100 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-white text-xs" style="font-variation-settings: 'FILL' 1;">park</span>
+                    </div>
+                    <div class="mt-2 px-3 py-1 bg-white/90 backdrop-blur-md rounded-lg shadow-sm border border-white/40">
+                        <span class="text-[10px] font-bold text-on-surface whitespace-nowrap">Azure Conservatory</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section: Recent Journeys -->
+        <section class="mt-16 mb-12">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h3 class="font-headline font-extrabold text-2xl text-on-surface tracking-tight">Recent Journeys</h3>
+                    <p class="text-on-surface-variant text-sm mt-1">Destinations you explored last weekend.</p>
+                </div>
+                <button class="text-primary font-bold text-xs font-label uppercase tracking-wider hover:underline underline-offset-4">View All History</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="group cursor-pointer">
+                    <div class="aspect-square rounded-3xl overflow-hidden relative mb-4 bg-surface-container">
+                        <img alt="Night Market" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="vibrant street market at night with neon signs, glowing lanterns and crowds of people in motion blur, dark moody atmosphere with colorful highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwij_ORNA8LlbU1VpHEGpKyp8fqPm7HjM549JdLZlgcELQciOeemZ4OY56CqgF2aEGDwxZyG2hisaEomyPVe_4woZk84_GufPfQQePfDAqWI7UYG-mi4nNZE5XVzMYh6zCUYNcGxX926WhHn6d5cAisDmEJ13ScFfVxW5-31jhvtYp8ZmWuNo6aNDh924rLN9Z1OdPQtv8Ec-B7IewSoxiyhC8DVXafXXuu_-O61K09MXtKi8fLeHAzq3Mq_97khzgrpYMimOdW6Jp"/>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm">
+                            <span class="text-[10px] font-bold text-primary">REVISITED</span>
+                        </div>
+                    </div>
+                    <h4 class="font-headline font-bold text-on-surface">Neon District Loop</h4>
+                    <p class="text-xs text-on-surface-variant mt-1">Last visited 2 days ago</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="aspect-square rounded-3xl overflow-hidden relative mb-4 bg-surface-container">
+                        <img alt="Mountain Trail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="winding dirt path along a steep mountain ridge overlooking a clear blue lake, sunny day with bright high contrast lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDan--ERo12zU0xjpIWRTTD8Wv82naERsM4ZBzHPL0C44JfHPRzceoL5M4xVkKIs65WGVVeZrihmhGhvO6UbLtxFwvWi_6emkS3DfWipl7W6Q0r2bYmtUIEgg6PQgMtAv0Mvwa8dVgNOA9aDaqT7GJmfad1CXas7ME6oAQ4A2nYeC9_tNdm_JTK18BnOu41qacjAUircl81qth9WiZOd0Qr5I1La15lwQlV0HptszVzMHCGAPgjJhAQPOBDQxZ4FybK2-7glzh1w9fX"/>
+                    </div>
+                    <h4 class="font-headline font-bold text-on-surface">Cloud Ridge Path</h4>
+                    <p class="text-xs text-on-surface-variant mt-1">Last visited Oct 12</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="aspect-square rounded-3xl overflow-hidden relative mb-4 bg-surface-container">
+                        <img alt="Eiffel Tower" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="modern aerial view of an iconic tower landmark surrounded by manicured green gardens and historic city buildings, soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfaBQVzwSSvADYdhPJsv8dyy2kP9hfSF8PgpPUoLJA8zKD7D_0ovaVNWkFO2tb7mOFC2KpE7bPZZ_M6lgTY4Nu7uhHHAO_ezDGUw9tdRaAE3lUUD7d8y69TAlQMszCij2GDW-y6hQJCxiS94i3KEjzw_7KwWJdvO565IaziiQObGFIPoqpTrVwTqe_-AZ4t_ElBuuNWX_CAtLdhYYNweMa22cJ5rcmMKGUc9gU6cP9jYf9QX78An_W6olh6Pbmk5YavLZqOaNLT-dX"/>
+                    </div>
+                    <h4 class="font-headline font-bold text-on-surface">Central Pavilion</h4>
+                    <p class="text-xs text-on-surface-variant mt-1">Last visited Oct 09</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- Floating Navigation Shell (Mobile) -->
+<nav class="md:hidden fixed bottom-6 left-6 right-6 h-16 bg-white/80 backdrop-blur-xl rounded-2xl flex items-center justify-around px-4 ambient-shadow z-50">
+    <a class="flex flex-col items-center gap-1 text-blue-700 font-bold" href="#">
+        <span class="material-symbols-outlined text-2xl" data-icon="explore">explore</span>
+        <span class="text-[10px] font-label uppercase tracking-widest">Explore</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+        <span class="material-symbols-outlined text-2xl" data-icon="bookmark">bookmark</span>
+        <span class="text-[10px] font-label uppercase tracking-widest">Saved</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+        <span class="material-symbols-outlined text-2xl" data-icon="map">map</span>
+        <span class="text-[10px] font-label uppercase tracking-widest">Map</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+        <span class="material-symbols-outlined text-2xl" data-icon="person_outline">person_outline</span>
+        <span class="text-[10px] font-label uppercase tracking-widest">Profile</span>
+    </a>
+</nav>
+<!-- Contextual FAB (Only on main Explore/Discovery views) -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center ambient-shadow transition-all hover:scale-105 active:scale-95 group z-40">
+    <span class="material-symbols-outlined text-2xl transition-transform group-hover:rotate-12">assistant_navigation</span>
+</button>
+</body></html>

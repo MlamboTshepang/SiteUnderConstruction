@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Cartographer | Digital Map Experience</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-on-surface": "#9a9d9f",
+                        "on-primary-container": "#00214e",
+                        "on-primary-fixed": "#000000",
+                        "on-surface-variant": "#595c5e",
+                        "secondary": "#4e5c71",
+                        "inverse-surface": "#0b0f10",
+                        "surface-variant": "#d9dde0",
+                        "surface-bright": "#f5f7f9",
+                        "tertiary-dim": "#7f2d7e",
+                        "primary": "#0058ba",
+                        "primary-dim": "#004da4",
+                        "on-error-container": "#570008",
+                        "tertiary-fixed": "#f797f0",
+                        "on-tertiary": "#ffeef8",
+                        "secondary-container": "#d5e3fc",
+                        "on-secondary-container": "#455367",
+                        "error-dim": "#9f0519",
+                        "on-secondary-fixed-variant": "#4e5c71",
+                        "surface-tint": "#0058ba",
+                        "primary-container": "#6c9fff",
+                        "on-secondary-fixed": "#324053",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#e88ae1",
+                        "surface-container": "#e5e9eb",
+                        "surface-container-high": "#dfe3e6",
+                        "tertiary-container": "#f797f0",
+                        "on-tertiary-container": "#610e63",
+                        "secondary-fixed-dim": "#c7d5ed",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-error": "#ffefee",
+                        "on-primary-fixed-variant": "#002a60",
+                        "surface-container-highest": "#d9dde0",
+                        "background": "#f5f7f9",
+                        "outline-variant": "#abadaf",
+                        "surface-container-low": "#eef1f3",
+                        "tertiary": "#8d3a8b",
+                        "on-background": "#2c2f31",
+                        "primary-fixed-dim": "#5091ff",
+                        "surface": "#f5f7f9",
+                        "on-secondary": "#edf3ff",
+                        "inverse-primary": "#4a8eff",
+                        "surface-dim": "#d0d5d8",
+                        "error-container": "#fb5151",
+                        "on-tertiary-fixed": "#400042",
+                        "on-primary": "#f0f2ff",
+                        "on-surface": "#2c2f31",
+                        "primary-fixed": "#6c9fff",
+                        "error": "#b31b25",
+                        "secondary-dim": "#435164",
+                        "outline": "#747779",
+                        "on-tertiary-fixed-variant": "#6c1a6c"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .map-gradient-overlay {
+            background: radial-gradient(circle at center, transparent 0%, rgba(245, 247, 249, 0.4) 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center px-4 h-16 max-w-5xl mx-auto bg-white/70 backdrop-blur-xl rounded-xl mt-4 shadow-xl shadow-slate-200/50">
+    <div class="flex items-center gap-4 w-full">
+        <span class="text-xl font-bold tracking-tight text-slate-900 font-headline">Cartographer</span>
+        <div class="flex-grow flex items-center max-w-md ml-8">
+            <div class="relative w-full">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                <input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/10 text-sm" placeholder="Search locations..." type="text"/>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 ml-auto">
+            <button class="p-2 rounded-xl text-slate-500 hover:bg-slate-100/50 transition-colors active:scale-95 duration-150">
+                <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <button class="p-2 rounded-xl text-slate-500 hover:bg-slate-100/50 transition-colors active:scale-95 duration-150">
+                <span class="material-symbols-outlined">settings</span>
+            </button>
+            <div class="h-8 w-8 rounded-full overflow-hidden ml-2 border-2 border-primary-container">
+                <img alt="User profile" class="w-full h-full object-cover" data-alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0IsUquBH9Qu_YMZHc0doqf6KCzl-7BFpGyf-tLZU4A4hPwyB6j7qaCMwhSkabnBHDOuOduJ0vQD1ZRgDM9RW8nND5s1iOWsc1_VpqwRwVfNe1pcLoTkvWiyRkuFfbMaQlUq-145nypkdI30SdZ36bc4FSf2wd-jlP68H1Y2Uiwtmj-WuPtuTZK2fuwGTGxrKCOfqKSO_P77jjRhQydjHHpwU7FOf-mDAr0MYqbRQe8dMPwOAULNP8nhV3PIBnqApWjeP5vzljcleJ"/>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Side Navigation Bar -->
+<nav class="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 z-40 bg-slate-50 pt-24 border-r-0">
+    <div class="px-6 mb-8">
+        <h2 class="text-2xl font-black text-blue-700 font-headline">The Explorer</h2>
+        <p class="text-xs font-label uppercase tracking-widest text-slate-500 mt-1">Elite Cartographer</p>
+    </div>
+    <div class="flex flex-col gap-1 px-3">
+        <a class="flex items-center gap-4 px-4 py-3 rounded-xl text-blue-700 border-r-4 border-blue-700 bg-blue-50 font-bold transition-colors" href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+            <span class="text-sm font-label uppercase tracking-tight">Explore</span>
+        </a>
+        <a class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-200 transition-colors" href="#">
+            <span class="material-symbols-outlined">bookmark</span>
+            <span class="text-sm font-label uppercase tracking-tight">Saved</span>
+        </a>
+        <a class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-200 transition-colors" href="#">
+            <span class="material-symbols-outlined">map</span>
+            <span class="text-sm font-label uppercase tracking-tight">Journeys</span>
+        </a>
+        <a class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-200 transition-colors" href="#">
+            <span class="material-symbols-outlined">person_outline</span>
+            <span class="text-sm font-label uppercase tracking-tight">Profile</span>
+        </a>
+    </div>
+    <div class="mt-auto p-6">
+        <button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-white rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+            <span class="material-symbols-outlined">add_location_alt</span>
+            <span>New Discovery</span>
+        </button>
+    </div>
+</nav>
+<!-- Main Content Area (Map) -->
+<main class="md:ml-64 h-screen relative bg-surface-container">
+    <!-- Map Canvas -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <img alt="Interactive Map" class="w-full h-full object-cover" data-alt="highly-detailed-aesthetic-top-down-minimalist-map-of-a-modern-european-city-grid-with-parks-river-and-streets-pastel-colors-high-contrast" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdnGbddiTcz_v06P-D4aCbt6pd1f54ny3VVs3sdm0tH9IDrSShCjy9HqFmY0PdG4-1vAaiRdCiyF5rFP3Sgfp8SeXi2XVm-rqlboshyjXkskWhhHMRpuJ-Vr9Zt0qqqPlfsBSi7zCk0ReOIHaHKtRtG6WSXCGx0XiMJZRRwMUu9JDk-609V7t4RLaVI8-QBRkvwY9OvOGoX2kqnpyuhA_d2nOOft1JIsaS7hCMhyR5n-U_fkgmoJLUepMejanPocxakKIlOAzhCe1Q"/>
+        <div class="absolute inset-0 map-gradient-overlay pointer-events-none"></div>
+    </div>
+    <!-- Floating Map Markers -->
+    <!-- Marker: Park -->
+    <div class="absolute top-[40%] left-[55%] z-10">
+        <div class="flex flex-col items-center group">
+            <div class="bg-surface-container-lowest p-2 rounded-full shadow-lg border-2 border-primary cursor-pointer hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-primary text-xl">park</span>
+            </div>
+            <div class="mt-2 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-lg shadow-sm border border-outline-variant/10">
+                <span class="text-[10px] font-label uppercase tracking-tighter text-on-surface">Golden Gate Park</span>
+            </div>
+        </div>
+    </div>
+    <!-- Marker: Restaurant (Active/Highlighted) -->
+    <div class="absolute top-[55%] left-[42%] z-20">
+        <div class="flex flex-col items-center">
+            <div class="relative">
+                <div class="bg-primary p-3 rounded-full shadow-2xl scale-125 border-4 border-surface-container-lowest flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-2xl" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+                </div>
+                <!-- Tooltip -->
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-48 bg-surface-container-lowest p-4 rounded-2xl shadow-2xl border border-primary/5">
+                    <span class="text-[10px] font-label uppercase tracking-widest text-primary font-bold">Featured Location</span>
+                    <h4 class="font-headline text-sm font-bold text-slate-900 mt-1">The Azure Bistro</h4>
+                    <div class="flex items-center gap-1 mt-2">
+                        <span class="material-symbols-outlined text-amber-400 text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="text-xs font-medium">4.9 (1.2k reviews)</span>
+                    </div>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-surface-container-lowest"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Marker: Home -->
+    <div class="absolute top-[30%] left-[30%] z-10">
+        <div class="flex flex-col items-center group">
+            <div class="bg-surface-container-lowest p-2 rounded-full shadow-lg border-2 border-slate-300 cursor-pointer hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-slate-600 text-xl">home</span>
+            </div>
+        </div>
+    </div>
+    <!-- Floating Side Panel -->
+    <aside class="absolute left-6 top-32 bottom-8 w-80 z-30 flex flex-col gap-4 pointer-events-none">
+        <div class="bg-surface-container-low/80 backdrop-blur-2xl rounded-3xl p-1 pointer-events-auto shadow-2xl shadow-slate-900/10">
+            <div class="bg-surface-container-lowest rounded-[20px] overflow-hidden">
+                <div class="h-40 relative">
+                    <img alt="The Azure Bistro" class="w-full h-full object-cover" data-alt="interior-of-a-modern-minimalist-blue-themed-bistro-restaurant-with-large-windows-and-soft-morning-light-high-end-photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWQEdxwXmvkrWbu3Vaz7IHxkVU8scg4BBAuqoSJ7VeTaHyjuqVfxcVrzO5Ccy-CDCWlqtEinruIA1qpOP5CKr3O_ilQfAGTL_HkGlxIaQFcM5aTsxKwFGvREeQEpx5dWb-TCbG-PnZ3ncP5MUVQt14v8kRJ_iQiLXjvrbYfOuWGOclbGo-Vt3mGFQY37sI1ynmL-_z1dk1WqTAKUGxc21oYC5023HNSMAxA-225_yZo9-UY5nhk2Y4vbtmZjfL2oTExQ5Wo20_a6c"/>
+                    <button class="absolute top-3 right-3 p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-colors">
+                        <span class="material-symbols-outlined text-sm">favorite</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-label uppercase tracking-widest text-slate-400">Atmospheric Dining</span>
+                            <h3 class="font-headline text-xl font-bold text-on-surface mt-1">The Azure Bistro</h3>
+                        </div>
+                        <div class="bg-primary/5 px-2 py-1 rounded-lg">
+                            <span class="text-xs font-bold text-primary">$$$</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-on-surface-variant mt-4 leading-relaxed">
+                        An experimental kitchen focusing on coastal flavors and geometric plating. Known for their signature blue-corn tacos and botanical spirits.
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 mt-6">
+                        <div class="bg-surface-container p-3 rounded-xl">
+                            <span class="text-[9px] font-label uppercase text-slate-500 block">Distance</span>
+                            <span class="font-bold text-sm">0.8 miles</span>
+                        </div>
+                        <div class="bg-surface-container p-3 rounded-xl">
+                            <span class="text-[9px] font-label uppercase text-slate-500 block">Travel Time</span>
+                            <span class="font-bold text-sm">12 min walk</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex gap-3">
+                        <button class="flex-1 bg-primary text-white py-3 rounded-xl font-bold text-sm hover:bg-primary-dim transition-colors active:scale-95">Get Directions</button>
+                        <button class="px-3 border border-outline-variant/30 rounded-xl hover:bg-slate-50 transition-colors">
+                            <span class="material-symbols-outlined text-slate-600">share</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contextual Quick Tips (Bento-like snippet) -->
+        <div class="bg-surface-container-lowest/90 backdrop-blur-md rounded-3xl p-4 pointer-events-auto border border-white/50 shadow-lg">
+            <div class="flex items-center gap-3">
+                <div class="bg-tertiary-container/30 p-2 rounded-xl">
+                    <span class="material-symbols-outlined text-tertiary">tips_and_updates</span>
+                </div>
+                <div>
+                    <span class="text-[10px] font-label uppercase tracking-tighter text-slate-500">Explorer Tip</span>
+                    <p class="text-xs font-medium">Sunset is at 6:42 PM. Best views at the Pier today.</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- Map Controls (Floating Instruments) -->
+    <div class="absolute right-6 bottom-8 z-30 flex flex-col gap-3 pointer-events-auto">
+        <button class="w-12 h-12 bg-surface-container-lowest/80 backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center text-slate-700 hover:bg-white transition-colors">
+            <span class="material-symbols-outlined">layers</span>
+        </button>
+        <div class="flex flex-col bg-surface-container-lowest/80 backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden">
+            <button class="w-12 h-12 flex items-center justify-center text-slate-700 hover:bg-white border-b border-outline-variant/10">
+                <span class="material-symbols-outlined">add</span>
+            </button>
+            <button class="w-12 h-12 flex items-center justify-center text-slate-700 hover:bg-white">
+                <span class="material-symbols-outlined">remove</span>
+            </button>
+        </div>
+        <button class="w-14 h-14 bg-primary rounded-full shadow-2xl flex items-center justify-center text-white hover:bg-primary-dim transition-all hover:scale-110 active:scale-95 shadow-primary/40">
+            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">my_location</span>
+        </button>
+    </div>
+    <!-- Filter Chips Over Map -->
+    <div class="absolute top-24 left-1/2 -translate-x-1/2 z-30 flex gap-3 pointer-events-auto max-w-full px-4 overflow-x-auto no-scrollbar">
+        <button class="px-6 py-2 bg-primary text-white rounded-full text-xs font-bold whitespace-nowrap shadow-lg shadow-primary/20">All Spots</button>
+        <button class="px-6 py-2 bg-surface-container-lowest/80 backdrop-blur-md text-slate-700 rounded-full text-xs font-bold whitespace-nowrap border border-white/50 hover:bg-white transition-colors">Restaurants</button>
+        <button class="px-6 py-2 bg-surface-container-lowest/80 backdrop-blur-md text-slate-700 rounded-full text-xs font-bold whitespace-nowrap border border-white/50 hover:bg-white transition-colors">Culture</button>
+        <button class="px-6 py-2 bg-surface-container-lowest/80 backdrop-blur-md text-slate-700 rounded-full text-xs font-bold whitespace-nowrap border border-white/50 hover:bg-white transition-colors">Outdoors</button>
+    </div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl h-16 flex items-center justify-around px-4 rounded-t-3xl shadow-2xl">
+    <button class="flex flex-col items-center gap-1 text-primary">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+        <span class="text-[10px] font-bold">Explore</span>
+    </button>
+    <button class="flex flex-col items-center gap-1 text-slate-400">
+        <span class="material-symbols-outlined">bookmark</span>
+        <span class="text-[10px] font-bold">Saved</span>
+    </button>
+    <div class="-mt-8">
+        <button class="w-14 h-14 bg-primary text-white rounded-full shadow-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-3xl">add</span>
+        </button>
+    </div>
+    <button class="flex flex-col items-center gap-1 text-slate-400">
+        <span class="material-symbols-outlined">map</span>
+        <span class="text-[10px] font-bold">Journeys</span>
+    </button>
+    <button class="flex flex-col items-center gap-1 text-slate-400">
+        <span class="material-symbols-outlined">person_outline</span>
+        <span class="text-[10px] font-bold">Profile</span>
+    </button>
+</nav>
+</body></html>
