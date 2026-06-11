@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Toggle Switch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 h-screen flex justify-center items-center font-sans antialiased">
+
+<div class="flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200">
+
+    <button id="toggle-btn" class="w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ease-in-out bg-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+        <div id="toggle-circle" class="bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300 ease-in-out translate-x-0"></div>
+    </button>
+    <span id="toggle-label" class="ml-3 text-gray-700 font-medium select-none w-8">Off</span>
+</div>
+
+<script>
+    // 1. Grab the HTML elements we need to change
+    const toggleBtn = document.getElementById('toggle-btn');
+    const toggleCircle = document.getElementById('toggle-circle');
+    const toggleLabel = document.getElementById('toggle-label');
+
+    // 2. Create a variable to remember if the switch is on or off
+    let isOn = false;
+
+    // 3. Listen for clicks on the button
+    toggleBtn.addEventListener('click', function() {
+        // Flip the status (if it was false, make it true, and vice versa)
+        isOn = !isOn;
+
+        // 4. Update the classes based on the new status
+        if (isOn) {
+            // Turn ON: Change background to green, slide right, update text
+            toggleBtn.classList.replace('bg-gray-300', 'bg-green-500');
+            toggleCircle.classList.replace('translate-x-0', 'translate-x-6');
+            toggleLabel.innerText = 'On';
+        } else {
+            // Turn OFF: Change background back to gray, slide left, update text
+            toggleBtn.classList.replace('bg-green-500', 'bg-gray-300');
+            toggleCircle.classList.replace('translate-x-6', 'translate-x-0');
+            toggleLabel.innerText = 'Off';
+        }
+    });
+</script>
+</body>
+</html>
