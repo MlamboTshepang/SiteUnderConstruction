@@ -1,10 +1,297 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<!--AVATAR DAY  87-->
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AvaGen - Avatar Editor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#d2bbff",
+                        "surface": "#fef7ff",
+                        "on-background": "#1d1a24",
+                        "on-secondary-fixed": "#001e2f",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#3d0026",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "inverse-on-surface": "#f6eefc",
+                        "tertiary": "#8f1e62",
+                        "on-primary-fixed": "#25005a",
+                        "on-tertiary-container": "#ffdce9",
+                        "tertiary-fixed-dim": "#ffafd3",
+                        "surface-container-low": "#f9f1ff",
+                        "outline": "#7b7487",
+                        "surface-container-highest": "#e8dfee",
+                        "background": "#fef7ff",
+                        "secondary-fixed-dim": "#89ceff",
+                        "primary": "#630ed4",
+                        "on-primary-container": "#ede0ff",
+                        "on-surface": "#1d1a24",
+                        "secondary": "#006591",
+                        "inverse-surface": "#332f39",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#85145a",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#ccc3d8",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#c9e6ff",
+                        "primary-fixed": "#eaddff",
+                        "surface-container-high": "#ede5f4",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#732ee4",
+                        "secondary-container": "#39b8fd",
+                        "surface-container": "#f3ebfa",
+                        "surface-variant": "#e8dfee",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#7c3aed",
+                        "inverse-primary": "#d2bbff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dfd7e6",
+                        "tertiary-container": "#ae397b",
+                        "on-secondary-container": "#004666",
+                        "tertiary-fixed": "#ffd8e7",
+                        "surface-bright": "#fef7ff",
+                        "on-surface-variant": "#4a4455"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "40px",
+                        "container-margin": "24px",
+                        "panel-width-desktop": "400px",
+                        "gutter": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": [
+                            "Quicksand"
+                        ],
+                        "body-lg": [
+                            "Quicksand"
+                        ],
+                        "headline-md": [
+                            "Quicksand"
+                        ],
+                        "display-lg": [
+                            "Quicksand"
+                        ],
+                        "body-md": [
+                            "Quicksand"
+                        ],
+                        "label-sm": [
+                            "Quicksand"
+                        ]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": [
+                            "32px",
+                            {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "body-lg": [
+                            "18px",
+                            {
+                                "lineHeight": "28px",
+                                "fontWeight": "500"
+                            }
+                        ],
+                        "headline-md": [
+                            "24px",
+                            {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "display-lg": [
+                            "48px",
+                            {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "label-sm": [
+                            "13px",
+                            {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                            }
+                        ]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
 </head>
-<body>
-$END$
-</body>
-</html>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-[88px] pb-[80px] md:pb-0">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin py-base max-w-7xl mx-auto bg-surface/80 dark:bg-on-background/80 backdrop-blur-lg shadow-sm dark:shadow-none hidden md:flex">
+    <div class="font-display-lg text-display-lg font-bold text-primary dark:text-primary-fixed-dim">AvaGen</div>
+    <nav class="flex gap-6">
+        <a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">Home</a>
+        <a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary font-body-md text-body-md hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">Editor</a>
+        <a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">Gallery</a>
+    </nav>
+    <div class="flex items-center gap-4">
+        <button class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim hover:text-primary transition-colors duration-200 active:scale-95 transition-transform">Create</button>
+        <button class="text-primary dark:text-primary-fixed-dim hover:text-primary transition-colors duration-200 active:scale-95 transition-transform">
+            <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+        </button>
+    </div>
+</header>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 md:hidden bg-surface dark:bg-on-background shadow-[0_-4px_20px_rgba(0,0,0,0.05)] rounded-t-lg">
+    <a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-all active:scale-90 transition-transform duration-150 p-2 rounded-xl" href="#">
+        <span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+        Home
+    </a>
+    <a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1 font-label-sm text-label-sm hover:bg-surface-container-high transition-all active:scale-90 transition-transform duration-150" href="#">
+        <span class="material-symbols-outlined fill-icon mb-1" data-icon="palette">palette</span>
+        Create
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-all active:scale-90 transition-transform duration-150 p-2 rounded-xl" href="#">
+        <span class="material-symbols-outlined mb-1" data-icon="explore">explore</span>
+        Gallery
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-all active:scale-90 transition-transform duration-150 p-2 rounded-xl" href="#">
+        <span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+        Profile
+    </a>
+</nav>
+<!-- Main Editor Layout -->
+<main class="flex-1 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-section-gap px-container-margin py-section-gap">
+    <!-- Left Panel: Categories (Desktop) / Top Horizontal Scroll (Mobile) -->
+    <aside class="w-full md:w-64 flex-shrink-0 flex flex-row md:flex-col gap-base overflow-x-auto md:overflow-visible pb-4 md:pb-0 hide-scrollbar">
+        <button class="bg-primary-container text-on-primary-container rounded-lg px-4 py-3 flex items-center gap-3 font-headline-md text-headline-md md:text-headline-md transition-transform active:scale-95 shadow-sm whitespace-nowrap md:whitespace-normal">
+            <span class="material-symbols-outlined fill-icon" data-icon="face">face</span>
+            Face
+        </button>
+        <button class="bg-surface-container text-on-surface hover:bg-surface-container-high rounded-lg px-4 py-3 flex items-center gap-3 font-headline-md text-headline-md md:text-headline-md transition-colors whitespace-nowrap md:whitespace-normal">
+            <span class="material-symbols-outlined" data-icon="cut">cut</span>
+            Hair
+        </button>
+        <button class="bg-surface-container text-on-surface hover:bg-surface-container-high rounded-lg px-4 py-3 flex items-center gap-3 font-headline-md text-headline-md md:text-headline-md transition-colors whitespace-nowrap md:whitespace-normal">
+            <span class="material-symbols-outlined" data-icon="styler">styler</span>
+            Clothes
+        </button>
+        <button class="bg-surface-container text-on-surface hover:bg-surface-container-high rounded-lg px-4 py-3 flex items-center gap-3 font-headline-md text-headline-md md:text-headline-md transition-colors whitespace-nowrap md:whitespace-normal">
+            <span class="material-symbols-outlined" data-icon="watch">watch</span>
+            Accessories
+        </button>
+    </aside>
+    <!-- Central Workspace: Avatar Preview -->
+    <section class="flex-1 flex flex-col items-center justify-center min-h-[40vh] md:min-h-0 relative">
+        <div class="relative w-full max-w-[500px] aspect-square rounded-full shadow-[0_20px_50px_rgba(99,14,212,0.1)] bg-gradient-to-tr from-surface-container-low to-primary-fixed-dim/20 flex items-center justify-center p-4">
+            <img alt="Avatar Preview" class="w-full h-full object-cover rounded-full shadow-inner" src="https://lh3.googleusercontent.com/aida/ADBb0ug9hj9YzxVRN55FdPJp5qjkHnggXBhFLA3wCLjzDTpZj48fOgjD7k2jDV7OixUKU2cSDsovB1Ufm-sNFpwXnl8xIv2HjgwQOgkLka3OUNtHvfO4vl1Zlwbhk96abo9c5YXgtnGWjnsMirwQZ6rvDn688Z5NbIVBXCHAAyHkoiMJv7Cg051APx0FLUlLOZ19TXVu1CXSwBLkieLreMU6WmFplkWHvsO0F0nfKJWRXXCKTtWIpjLTbpfKHyM"/>
+            <!-- Floating Action Buttons for Preview -->
+            <div class="absolute bottom-4 right-4 flex gap-2">
+                <button class="w-12 h-12 rounded-full bg-surface text-primary shadow-md flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors active:scale-90">
+                    <span class="material-symbols-outlined" data-icon="shuffle">shuffle</span>
+                </button>
+                <button class="w-12 h-12 rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors active:scale-90">
+                    <span class="material-symbols-outlined" data-icon="download">download</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Right Panel: Options -->
+    <aside class="w-full md:w-panel-width-desktop flex-shrink-0 flex flex-col gap-6 bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/30">
+        <!-- Sub-categories Chips -->
+        <div class="flex gap-2 overflow-x-auto pb-2 hide-scrollbar">
+            <button class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm whitespace-nowrap">Shape</button>
+            <button class="px-4 py-1.5 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-highest font-label-sm text-label-sm whitespace-nowrap">Eyes</button>
+            <button class="px-4 py-1.5 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-highest font-label-sm text-label-sm whitespace-nowrap">Nose</button>
+            <button class="px-4 py-1.5 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-highest font-label-sm text-label-sm whitespace-nowrap">Mouth</button>
+        </div>
+        <!-- Option Grid (Bento Style) -->
+        <div class="grid grid-cols-3 gap-3">
+            <button class="aspect-square bg-surface-container rounded-lg border-2 border-primary overflow-hidden relative shadow-sm hover:shadow-md transition-shadow">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-primary" data-icon="face">face</span>
+                </div>
+            </button>
+            <button class="aspect-square bg-surface-container hover:bg-surface-container-high rounded-lg border-2 border-transparent overflow-hidden relative transition-colors">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="face_2">face_2</span>
+                </div>
+            </button>
+            <button class="aspect-square bg-surface-container hover:bg-surface-container-high rounded-lg border-2 border-transparent overflow-hidden relative transition-colors">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="face_3">face_3</span>
+                </div>
+            </button>
+            <button class="aspect-square bg-surface-container hover:bg-surface-container-high rounded-lg border-2 border-transparent overflow-hidden relative transition-colors">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="face_4">face_4</span>
+                </div>
+            </button>
+            <button class="aspect-square bg-surface-container hover:bg-surface-container-high rounded-lg border-2 border-transparent overflow-hidden relative transition-colors">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="face_5">face_5</span>
+                </div>
+            </button>
+            <button class="aspect-square bg-surface-container hover:bg-surface-container-high rounded-lg border-2 border-transparent overflow-hidden relative transition-colors">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="face_6">face_6</span>
+                </div>
+            </button>
+        </div>
+        <!-- Fine-tuning Slider -->
+        <div class="mt-4">
+            <label class="block text-on-surface-variant font-label-sm text-label-sm mb-2 flex justify-between">
+                <span>Width</span>
+                <span class="text-primary font-bold">50%</span>
+            </label>
+            <input class="w-full h-2 bg-surface-variant rounded-full appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="50"/>
+        </div>
+        <!-- Color Swatches -->
+        <div class="mt-4">
+            <label class="block text-on-surface-variant font-label-sm text-label-sm mb-3">Skin Tone</label>
+            <div class="flex gap-3 flex-wrap">
+                <button class="w-8 h-8 rounded-full bg-[#fcd5ce] ring-2 ring-primary ring-offset-2 ring-offset-surface transition-all"></button>
+                <button class="w-8 h-8 rounded-full bg-[#f8edeb] hover:scale-110 transition-transform"></button>
+                <button class="w-8 h-8 rounded-full bg-[#e8e8e4] hover:scale-110 transition-transform"></button>
+                <button class="w-8 h-8 rounded-full bg-[#d8e2dc] hover:scale-110 transition-transform"></button>
+                <button class="w-8 h-8 rounded-full bg-[#ece4db] hover:scale-110 transition-transform"></button>
+                <button class="w-8 h-8 rounded-full bg-[#ffe5d9] hover:scale-110 transition-transform"></button>
+                <button class="w-8 h-8 rounded-full bg-[#ffd7ba] hover:scale-110 transition-transform"></button>
+            </div>
+        </div>
+    </aside>
+</main>
+
+</body></html>
